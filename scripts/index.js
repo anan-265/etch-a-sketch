@@ -1,5 +1,7 @@
 let containerDiv = document.querySelector('.container');
 let setGridButton = document.getElementById('set-size');
+let resetOpacityButton = document.getElementById('reset-opacity');
+
 let size = 0;
 let sizeRoot = 4;
 setGridButton.addEventListener('click', function() {
@@ -21,11 +23,20 @@ for (let i = 1; i <=sizeRoot; i++) {
         boxDiv.classList.add('box');
         boxDiv.style.width = (480 / sizeRoot) + 'px';
         boxDiv.style.height = (480 / sizeRoot) + 'px';
+        let darkOpacity = 0.1;
+        resetOpacityButton.addEventListener('click', function() {
+        darkOpacity = 0.1;
+    }
+    )
         boxDiv.addEventListener('mouseover', function() {
             let randRed = Math.floor(Math.random() * 256);
             let randGreen = Math.floor(Math.random() * 256);
             let randBlue = Math.floor(Math.random() * 256);
-            boxDiv.style.backgroundColor = `rgb(${randRed}, ${randGreen}, ${randBlue})`;
+            boxDiv.style.backgroundColor = `rgb(${randRed}, ${randGreen}, ${randBlue}, ${darkOpacity})`;
+            console.log(i, j, randRed, randGreen, randBlue, darkOpacity);
+            if (darkOpacity < 1) {
+                darkOpacity += 0.1;
+            }
         })
         boxDiv.addEventListener('mouseout', function() {
             setTimeout(function() {
