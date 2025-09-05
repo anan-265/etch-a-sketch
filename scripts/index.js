@@ -22,11 +22,14 @@ for (let i = 1; i <=sizeRoot; i++) {
         boxDiv.style.width = (480 / sizeRoot) + 'px';
         boxDiv.style.height = (480 / sizeRoot) + 'px';
         boxDiv.addEventListener('mouseover', function() {
-            boxDiv.classList.add('box-hovered');
+            let randRed = Math.floor(Math.random() * 256);
+            let randGreen = Math.floor(Math.random() * 256);
+            let randBlue = Math.floor(Math.random() * 256);
+            boxDiv.style.backgroundColor = `rgb(${randRed}, ${randGreen}, ${randBlue})`;
         })
         boxDiv.addEventListener('mouseout', function() {
             setTimeout(function() {
-                boxDiv.classList.remove('box-hovered');
+                boxDiv.style.backgroundColor = 'white';
             }, 250);
         })
         containerDiv.appendChild(boxDiv);
